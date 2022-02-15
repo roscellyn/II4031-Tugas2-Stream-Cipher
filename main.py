@@ -26,7 +26,7 @@ for i in range(len(arr)):
     arr[len(arr)-1] = (temp)
     # print(arr)
 
-print("Final KinB: " + str(arr))
+# print("Final KinB: " + str(arr))
 
 j = 0
 for i in range(256):
@@ -51,6 +51,7 @@ def encrypt():
         arrP.append(byte)
 
     arrC = []
+    strC = []
     i = 0
     j = 0
 
@@ -63,7 +64,7 @@ def encrypt():
         S[i] = S[j]
         S[j] = temp
 
-        t = (S[i] + S[j]) % 256
+        t = (S[i] * S[j]) % 256
         u = S[t]
         C = u ^ arrP[idx]
         # print("Tipe C: " , type(C))
@@ -71,24 +72,25 @@ def encrypt():
         # print("Tipe arrP : " , type(arrP[idx]))
         # C = bytes(str(C),'utf-8')
         # print(C)
-        arrC.append(chr(C))
-    print(arrC)
-    return ''.join(arrC)
+        strC.append(chr(C))
+        arrC.append(C)
+    print("Ciperteks= " , ''.join(strC))
+    return arrC
 
 # Dekripsi
-def decrypt(C):
+def decrypt(arrC):
     # Pseudo-random Generation Algorithm (PRGA)
-    print(C)
-    CinB = bytes(C, 'utf-8')
-    arrC = []
-    for byte in CinB:
-        arrC.append(byte)
+    # print(arrC)
+    # CinB = bytes(C, 'utf-8')
+    # arrC = []
+    # for byte in CinB:
+    #     arrC.append(byte)
 
     arrP = []
     i = 0
     j = 0
 
-    print(CinB)
+    # print(CinB)
     
     for idx in range(len(arrC)):
         i = (i + 1) % 256
@@ -99,7 +101,7 @@ def decrypt(C):
         SC[i] = SC[j]
         SC[j] = temp
 
-        t = (SC[i] + SC[j]) % 256
+        t = (SC[i] * SC[j]) % 256
         u = SC[t]
         P = u ^ arrC[idx]
         # print("Tipe C: " , type(C))
@@ -108,7 +110,7 @@ def decrypt(C):
         # C = bytes(str(C),'utf-8')
         # print(C)
         arrP.append(chr(P))
-    print(arrP)
+    print("Plainteks= " ,''.join(arrP))
 
 cipherteks = encrypt()
 decrypt(cipherteks)
