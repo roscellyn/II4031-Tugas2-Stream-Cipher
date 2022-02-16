@@ -42,10 +42,20 @@ for i in S:
     SC.append(i)
 
 # Enkripsi
-def encrypt():
+def encrypt(plainteks, is_file, filename):
     # Pseudo-random Generation Algorithm (PRGA)
-    P = input()
-    PinB = bytes(P,'utf-8')
+    if(is_file):
+        f=open(filename,"rb")
+        file_bytes = f.read()
+        f.close()
+        PinB = file_bytes
+    else:
+        P = plainteks
+        PinB = bytes(P,'utf-8')
+    # print(bytes)
+    # for byte in bytes:
+    #     print(bytes
+    
     arrP = []
     for byte in PinB:
         arrP.append(byte)
@@ -74,7 +84,16 @@ def encrypt():
         # print(C)
         strC.append(chr(C))
         arrC.append(C)
-    print("Ciperteks= " , ''.join(strC))
+
+    if(is_file):
+        arrCB = bytearray(arrC)    
+        # print("Ciperteks= " , ''.join(strC))
+        
+        w=open("encrypt-results.pdf", "wb")
+        w.write(arrCB)
+        
+        return arrCB
+
     return arrC
 
 # Dekripsi
@@ -86,7 +105,18 @@ def decrypt(arrC):
     # for byte in CinB:
     #     arrC.append(byte)
 
+    # print(type(arrC))
+    is_file = False
+    
+    if(type(arrC) is bytearray):
+        is_file = True
+        temp = []
+        for byte in arrC:
+            temp.append(byte)
+        arrC = temp
+
     arrP = []
+    arrPB = []
     i = 0
     j = 0
 
@@ -109,8 +139,27 @@ def decrypt(arrC):
         # print("Tipe arrP : " , type(arrP[idx]))
         # C = bytes(str(C),'utf-8')
         # print(C)
+        arrPB.append(P)
         arrP.append(chr(P))
-    print("Plainteks= " ,''.join(arrP))
+    
+    # print(is_file)
+    
+    if(is_file):
+        arrPB = bytearray(arrPB)  
+        w=open("decrypt-results.pdf", "wb")
+        w.write(arrPB)
+    else:
+        print("Plainteks= " ,''.join(arrP))
 
-cipherteks = encrypt()
+is_file = False
+filename = ""
+plainteks = ""
+choice = input("Pilih plainteks(A) atau upload file(B)? ")
+if(choice == "B"):
+    is_file = True
+    filename = input("Masukkan nama file: ")
+else:
+    plainteks = input("Plainteks: ")
+    
+cipherteks = encrypt(plainteks, is_file, filename)
 decrypt(cipherteks)
