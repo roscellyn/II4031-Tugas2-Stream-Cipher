@@ -305,7 +305,7 @@
       </font>
      </property>
      <property name="text">
-      <string>Plainteks</string>
+      <string>Teks</string>
      </property>
     </widget>
    </widget>
@@ -363,6 +363,27 @@
      </property>
     </widget>
    </widget>
+   <widget class="QLabel" name="alert">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>630</y>
+      <width>441</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Poppins</family>
+     </font>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -370,7 +391,7 @@
      <x>0</x>
      <y>0</y>
      <width>480</width>
-     <height>21</height>
+     <height>18</height>
     </rect>
    </property>
   </widget>
