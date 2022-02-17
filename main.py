@@ -224,7 +224,6 @@ class MainScreen(QtWidgets.QMainWindow):
             CinB = file_bytes
         else:
             C = self.input_text
-            print(C)
             CinB = bytes(C,"latin-1")
         
         arrC = []
