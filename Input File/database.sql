@@ -41,7 +41,7 @@ CREATE TABLE `informasi_tutor` (
   PRIMARY KEY (`id`),
   KEY `FK_ID_EMAIL` (`id`,`email`),
   CONSTRAINT `informasi_tutor_ibfk_1` FOREIGN KEY (`id`, `email`) REFERENCES `user` (`id`, `email`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -67,7 +67,7 @@ CREATE TABLE `user` (
   `password` varchar(20) DEFAULT NULL,
   `role` enum('admin','tutor') DEFAULT 'tutor',
   PRIMARY KEY (`id`,`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
