@@ -264,12 +264,21 @@ class MainScreen(QtWidgets.QMainWindow):
                 self.decrypt()
         
     def browse_file(self):
-        self.alert.setText("")
         file = QFileDialog.getOpenFileName(self)
         self.filename = file[0]
         self.browse_filename.setText(self.filename)
-        print(self.filename)
         self.extension = os.path.splitext(file[0])[1][1:]
+        self.alert.setText("")
+        
+        if(self.extension == "txt"):
+            arr = []
+            f=open(self.filename,"rb")
+            file_bytes = f.read()
+            f.close()
+            
+            for byte in file_bytes:
+                arr.append(chr(byte))
+            self.input.setText(''.join(arr))
 
     def generate_key(self):
         self.key = self.input_key.toPlainText()
