@@ -79,6 +79,7 @@ class MainScreen(QtWidgets.QMainWindow):
         self.alert.setStyleSheet("color: black;")
         self.arrCB = None
         self.arrPB = None
+        self.browse_filename.setText("")
         
     def generate(self):
         if self.jenis_file.isChecked():
@@ -92,14 +93,16 @@ class MainScreen(QtWidgets.QMainWindow):
             if(self.is_file and (self.filename == "")):
                 self.browse_filename.setText("Upload file dulu!")
             else:
-                self.extension = "txt"
+                if(not self.is_file):
+                    self.extension = "txt"
                 self.encrypt()
         else:
             self.is_encrypt = False
             if(self.is_file and (self.filename == "")):
                 self.browse_filename.setText("Upload file dulu!")
             else:
-                self.extension = "txt"
+                if(not self.is_file):
+                    self.extension = "txt"
                 self.decrypt()
         
     def browse_file(self):
