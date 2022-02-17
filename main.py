@@ -202,27 +202,31 @@ class MainScreen(QtWidgets.QMainWindow):
             self.save_name = ""
             self.filename = ""
             self.extension = "txt"
-            self.alert.setText("")
         else:
             self.is_file = True
-            self.alert.setText("")
+        self.alert.setText("")
+        self.alert.setStyleSheet("color: black;")
     
     def save_file(self):
         self.save_name = self.save_filename.text()
         if(self.is_encrypt):
             if(self.arrCB is None):
                 self.alert.setText("Enkripsi dulu!")
+                self.alert.setStyleSheet("color: red;")
             else:
                 w=open(self.save_name + "." + self.extension, "wb")
                 w.write(self.arrCB)
                 self.alert.setText("File berhasil disimpan!")
+                self.alert.setStyleSheet("color: black;")
         else:
             if(self.arrPB is None):
                 self.alert.setText("Dekripsi dulu!")
+                self.alert.setStyleSheet("color: red;")
             else:
                 w=open(self.save_name + "." + self.extension, "wb")
                 w.write(self.arrPB)
                 self.alert.setText("File berhasil disimpan!")
+                self.alert.setStyleSheet("color: black;")
 
     def change_method(self):
         if(self.metode_encrypt.isChecked()):
@@ -238,6 +242,7 @@ class MainScreen(QtWidgets.QMainWindow):
         self.input.setText("")
         self.output.setText("")
         self.alert.setText("")
+        self.alert.setStyleSheet("color: black;")
         self.arrCB = None
         self.arrPB = None
         
@@ -269,6 +274,7 @@ class MainScreen(QtWidgets.QMainWindow):
         self.browse_filename.setText(self.filename)
         self.extension = os.path.splitext(file[0])[1][1:]
         self.alert.setText("")
+        self.alert.setStyleSheet("color: black;")
         
         if(self.extension == "txt"):
             arr = []
