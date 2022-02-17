@@ -148,7 +148,10 @@ class MainScreen(QtWidgets.QMainWindow):
         arr = []
         for byte in KinB:
             arr.append(byte)
-            
+        
+        # Memutarbalikkan key
+        arr.reverse()
+        
         Ks = []
         for i in range(len(arr)):
             temp = arr[len(arr)-1] ^ arr[0]
