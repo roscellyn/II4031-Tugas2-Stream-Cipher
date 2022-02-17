@@ -347,10 +347,7 @@ class MainScreen(QtWidgets.QMainWindow):
 
         self.arrCB = bytearray(arrC)
         
-        if(self.is_file):
-            self.output.setText("Save file untuk melihat hasil enkripsi")
-        else:
-            self.output.setText(''.join(strC))
+        self.output.setText(''.join(strC))
 
     def decrypt(self):
         self.generate_key()
@@ -390,10 +387,7 @@ class MainScreen(QtWidgets.QMainWindow):
             arrP.append(P)
             
         self.arrPB = bytearray(arrP)
-        if(self.is_file):
-            self.output.setText("Save file untuk melihat hasil dekripsi")
-        else:
-            self.output.setText(''.join(strP))
+        self.output.setText(''.join(strP))
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
